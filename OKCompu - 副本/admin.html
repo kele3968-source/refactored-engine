@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台管理系统 - 艾瑞斯教育</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #2C3E50;
+            --accent-color: #27AE60;
+            --light-gray: #F8F9FA;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        .sidebar {
+            background: var(--secondary-color);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            width: 250px;
+            transition: all 0.3s;
+        }
+
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 15px 20px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--primary-color);
+        }
+
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            background: white;
+            border-bottom: 1px solid #eee;
+            padding: 20px 25px;
+            border-radius: 15px 15px 0 0 !important;
+        }
+
+        .card-title {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table th {
+            background: var(--light-gray);
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .badge-success {
+            background: var(--accent-color);
+        }
+
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(255, 107, 53, 0.25);
+        }
+
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+
+        .modal-header {
+            background: var(--light-gray);
+            border-radius: 15px 15px 0 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stats-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .stats-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .tab-content {
+            padding: 20px 0;
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            color: #666;
+            padding: 12px 25px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .nav-tabs .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <div class="p-4">
+            <h4 class="mb-4">
+                <i class="fas fa-graduation-cap"></i>
+                艾瑞斯教育后台
+            </h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        仪表盘
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#teachers">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        师资管理
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#achievements">
+                        <i class="fas fa-trophy"></i>
+                        学习成果
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#activities">
+                        <i class="fas fa-calendar-alt"></i>
+                        活动管理
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#settings">
+                        <i class="fas fa-cog"></i>
+                        系统设置
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="main-content">
+        <!-- 头部 -->
+        <div class="header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">后台管理系统</h3>
+                <div class="d-flex align-items-center">
+                    <span class="me-3">管理员</span>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">个人设置</a></li>
+                            <li><a class="dropdown-item" href="#">退出登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 仪表盘 -->
+        <div id="dashboard" class="tab-content">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card stats-card">
+                        <div class="stats-number" id="teacherCount">0</div>
+                        <div class="stats-label">教师总数</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stats-card">
+                        <div class="stats-number" id="achievementCount">0</div>
+                        <div class="stats-label">学习成果</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stats-card">
+                        <div class="stats-number" id="activityCount">0</div>
+                        <div class="stats-label">活动数量</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stats-card">
+                        <div class="stats-number" id="totalViews">0</div>
+                        <div class="stats-label">总访问量</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">最近更新</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="recentUpdates"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">快捷操作</h5>
+                        </div>
+                        <div class="card-body">
+                            <button class="btn btn-primary w-100 mb-2" onclick="showAddTeacherModal()">
+                                <i class="fas fa-plus"></i> 添加教师
+                            </button>
+                            <button class="btn btn-primary w-100 mb-2" onclick="showAddAchievementModal()">
+                                <i class="fas fa-plus"></i> 添加成果
+                            </button>
+                            <button class="btn btn-primary w-100 mb-2" onclick="showAddActivityModal()">
+                                <i class="fas fa-plus"></i> 添加活动
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 师资管理 -->
+        <div id="teachers" class="tab-content" style="display: none;">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">师资管理</h5>
+                    <button class="btn btn-primary" onclick="showAddTeacherModal()">
+                        <i class="fas fa-plus"></i> 添加教师
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>科目</th>
+                                    <th>教龄</th>
+                                    <th>证书</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="teacherTable">
+                                <!-- 教师数据将通过JavaScript动态生成 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 学习成果管理 -->
+        <div id="achievements" class="tab-content" style="display: none;">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">学习成果管理</h5>
+                    <button class="btn btn-primary" onclick="showAddAchievementModal()">
+                        <i class="fas fa-plus"></i> 添加成果
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>标题</th>
+                                    <th>类别</th>
+                                    <th>学生</th>
+                                    <th>日期</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="achievementTable">
+                                <!-- 成果数据将通过JavaScript动态生成 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 活动管理 -->
+        <div id="activities" class="tab-content" style="display: none;">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">活动管理</h5>
+                    <button class="btn btn-primary" onclick="showAddActivityModal()">
+                        <i class="fas fa-plus"></i> 添加活动
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>活动名称</th>
+                                    <th>类别</th>
+                                    <th>日期</th>
+                                    <th>地点</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activityTable">
+                                <!-- 活动数据将通过JavaScript动态生成 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加教师模态框 -->
+    <div class="modal fade" id="addTeacherModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">添加教师</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="teacherForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">姓名</label>
+                                    <input type="text" class="form-control" name="name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">科目</label>
+                                    <input type="text" class="form-control" name="subject" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">教龄</label>
+                                    <input type="number" class="form-control" name="experience" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">证书</label>
+                                    <input type="text" class="form-control" name="certificates" placeholder="用逗号分隔">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">描述</label>
+                            <textarea class="form-control" name="description" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">头像URL</label>
+                            <input type="text" class="form-control" name="avatar">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="saveTeacher()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加成果模态框 -->
+    <div class="modal fade" id="addAchievementModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">添加学习成果</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="achievementForm">
+                        <div class="mb-3">
+                            <label class="form-label">标题</label>
+                            <input type="text" class="form-control" name="title" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">类别</label>
+                                    <select class="form-control" name="category" required>
+                                        <option value="">请选择</option>
+                                        <option value="艺术作品">艺术作品</option>
+                                        <option value="科学实验">科学实验</option>
+                                        <option value="竞赛获奖">竞赛获奖</option>
+                                        <option value="考试成绩">考试成绩</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">学生姓名</label>
+                                    <input type="text" class="form-control" name="student" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">描述</label>
+                            <textarea class="form-control" name="description" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">图片URL</label>
+                            <input type="text" class="form-control" name="image">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">日期</label>
+                            <input type="date" class="form-control" name="date" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="saveAchievement()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加活动模态框 -->
+    <div class="modal fade" id="addActivityModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">添加活动</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="activityForm">
+                        <div class="mb-3">
+                            <label class="form-label">活动名称</label>
+                            <input type="text" class="form-control" name="title" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">类别</label>
+                                    <select class="form-control" name="category" required>
+                                        <option value="">请选择</option>
+                                        <option value="节日庆典">节日庆典</option>
+                                        <option value="比赛竞赛">比赛竞赛</option>
+                                        <option value="户外探索">户外探索</option>
+                                        <option value="艺术展演">艺术展演</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">地点</label>
+                                    <input type="text" class="form-control" name="location" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">描述</label>
+                            <textarea class="form-control" name="description" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">图片URL</label>
+                            <input type="text" class="form-control" name="image">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">开始日期</label>
+                                    <input type="date" class="form-control" name="startDate" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">结束日期</label>
+                                    <input type="date" class="form-control" name="endDate">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="saveActivity()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>

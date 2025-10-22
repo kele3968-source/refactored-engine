@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>艾瑞斯青少儿国际教育中心 - 专业青少儿教育培训机构</title>
+    <meta name="description" content="艾瑞斯青少儿国际教育中心致力于为3-16岁孩子提供优质的国际化教育培训，包括英语、数学、科学、艺术等课程，拥有专业师资团队和丰富的教学成果。">
+    
+    <!-- External Libraries (localized) -->
+    <link href="../default/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../default/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/base.css" rel="stylesheet">
+    <link href="assets/css/index.css" rel="stylesheet">
+    <!-- Fallback CDN for preview environment -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Localized styles -->
+    <style>
+
+        .teacher-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .teacher-card:hover .teacher-image {
+            transform: scale(1.05);
+        }
+
+        .teacher-info {
+            padding: 25px;
+        }
+
+        .teacher-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .teacher-subject {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .teacher-experience {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .teacher-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .teacher-certificates {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .certificate-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .achievement-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .achievement-info {
+            padding: 20px;
+        }
+
+        .achievement-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .achievement-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--warm-orange));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-content {
+            line-height: 1.8;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--warm-orange);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .splide__slide img {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        .splide__pagination {
+            bottom: 30px;
+        }
+
+        .splide__pagination__page {
+            background: rgba(255, 255, 255, 0.5);
+            width: 12px;
+            height: 12px;
+            margin: 0 8px;
+        }
+
+        .splide__pagination__page.is-active {
+            background: var(--primary-color);
+        }
+
+        .splide__arrow {
+            background: rgba(255, 255, 255, 0.9);
+            width: 50px;
+            height: 50px;
+        }
+
+        .splide__arrow svg {
+            fill: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">艾瑞斯教育</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="teachers.html">师资力量</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="achievements.html">学习成果</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">关于我们</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html">预约试听</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="activities.html">活动展示</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Carousel -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <div class="splide" id="hero-carousel">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <img src="resources/hero-classroom.png" alt="现代化教室环境">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="static/images/nopic.png" alt="孩子们在学习">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="https://kimi-web-img.moonshot.cn/img/www.graduateprogram.org/a25ff7cc6f54fb66278537df3009cd4de3f66ac3.jpg" alt="师生互动">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="resources/activities-montage.png" alt="丰富的教学活动">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="https://kimi-web-img.moonshot.cn/img/todaysparent.mblycdn.com/e7848c2490b72db4712511c5a826c7f5c91426dd.jpg" alt="毕业典礼">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="static/images/nopic.png" alt="毕业典礼">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="resources/facility-exterior.png" alt="教育中心外观">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">艾瑞斯青少儿国际教育中心</h1>
+            <p class="hero-subtitle">培养未来国际化人才，成就每一个孩子的独特潜能</p>
+            <p class="hero-description">专业师资团队 · 个性化教学方案 · 国际化课程体系 · 卓越教学成果</p>
+            <div class="cta-buttons">
+                <a href="booking.html" class="btn btn-primary-custom">立即预约试听</a>
+                <a href="about.html" class="btn btn-outline-custom">了解更多</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">我们的教育特色</h2>
+            <p class="section-subtitle">致力于为每个孩子提供最适合的国际化教育方案，培养全面发展的人才</p>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3 class="feature-title">国际化课程体系</h3>
+                        <p class="feature-description">融合中西方教育精华，采用国际化教学标准，为学生提供全球视野和跨文化交流能力。</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">👨‍🏫</div>
+                        <h3 class="feature-title">专业师资团队</h3>
+                        <p class="feature-description">拥有丰富教学经验的海内外专业教师，持有国际教师资格证书，深谙儿童教育心理学。</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3 class="feature-title">个性化教学方案</h3>
+                        <p class="feature-description">根据每个孩子的特点和学习进度，制定专属学习计划，确保最佳学习效果。</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌟</div>
+                        <h3 class="feature-title">全面发展培养</h3>
+                        <p class="feature-description">注重学术能力、创新思维、社交技能和品格修养的全方位培养，培养未来领袖人才。</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h3 class="feature-title">卓越教学成果</h3>
+                        <p class="feature-description">学员在各类竞赛中屡获佳绩，升学率高达98%，深受家长信赖和社会认可。</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">💡</div>
+                        <h3 class="feature-title">创新教学方法</h3>
+                        <p class="feature-description">运用多媒体技术、互动式教学和项目式学习，激发孩子学习兴趣和创造力。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="1500">0</span>
+                        <span class="stat-label">在读学员</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="50">0</span>
+                        <span class="stat-label">专业教师</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="8">0</span>
+                        <span class="stat-label">教学科目</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="98">0</span>
+                        <span class="stat-label">升学率(%)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Teachers Section -->
+    <section class="section-padding" style="background: var(--light-gray);">
+        <div class="container">
+            <h2 class="section-title">明星教师团队</h2>
+            <p class="section-subtitle">汇聚海内外教育精英，为学生提供最优质的学习体验</p>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="teacher-card">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.graduateprogram.org/a25ff7cc6f54fb66278537df3009cd4de3f66ac3.jpg" alt="王老师" class="teacher-image">
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">王梦琪</h3>
+                            <p class="teacher-subject">英语教育专家</p>
+                            <p class="teacher-experience">从业年限：8年 | 已教授学员：500+</p>
+                            <p class="teacher-description">英国剑桥大学TESOL硕士，专注于少儿英语教育，擅长通过游戏化教学激发孩子学习兴趣。</p>
+                            <div class="teacher-certificates">
+                                <span class="certificate-badge">TESOL</span>
+                                <span class="certificate-badge">剑桥认证</span>
+                                <span class="certificate-badge">8年经验</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="teacher-card">
+                        <img src="resources/teachers-group.png" alt="李老师" class="teacher-image">
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">李明华</h3>
+                            <p class="teacher-subject">数学思维导师</p>
+                            <p class="teacher-experience">从业年限：10年 | 已教授学员：800+</p>
+                            <p class="teacher-description">北京大学数学系博士，奥林匹克数学竞赛金牌教练，擅长培养孩子的逻辑思维和解题能力。</p>
+                            <div class="teacher-certificates">
+                                <span class="certificate-badge">数学博士</span>
+                                <span class="certificate-badge">奥赛教练</span>
+                                <span class="certificate-badge">10年经验</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="teacher-card">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.howtolearn.com/c5ee68888a8373fdb9cc3237b89aa24df1528471.jpg" alt="张老师" class="teacher-image">
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">张雅婷</h3>
+                            <p class="teacher-subject">科学探索导师</p>
+                            <p class="teacher-experience">从业年限：6年 | 已教授学员：400+</p>
+                            <p class="teacher-description">清华大学物理学硕士，专注于STEM教育，通过实验和实践培养孩子的科学探索精神。</p>
+                            <div class="teacher-certificates">
+                                <span class="certificate-badge">物理学硕士</span>
+                                <span class="certificate-badge">STEM专家</span>
+                                <span class="certificate-badge">6年经验</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="teachers.html" class="btn btn-primary-custom">查看全部师资</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Preview Section -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">优秀学习成果</h2>
+            <p class="section-subtitle">见证每一个孩子的成长足迹，分享学习的喜悦与成就</p>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="achievement-card">
+                        <img src="resources/achievements-showcase.png" alt="学员作品" class="achievement-image">
+                        <div class="achievement-info">
+                            <h3 class="achievement-title">创意艺术作品集</h3>
+                            <p class="achievement-description">5-8岁学员的创意绘画和手工制作作品，展现了孩子们丰富的想象力和艺术天赋。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="achievement-card">
+                        <img src="https://kimi-web-img.moonshot.cn/img/happyartloft.com/d15553f5f1b2893f262c36802be638b6a50495c3.jpg" alt="科学实验" class="achievement-image">
+                        <div class="achievement-info">
+                            <h3 class="achievement-title">科学实验成果</h3>
+                            <p class="achievement-description">9-12岁学员在科学课程中的实验成果，培养了孩子们的观察能力和科学思维。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="achievement-card">
+                        <img src="https://kimi-web-img.moonshot.cn/img/todaysparent.mblycdn.com/e7848c2490b72db4712511c5a826c7f5c91426dd.jpg" alt="毕业典礼" class="achievement-image">
+                        <div class="achievement-info">
+                            <h3 class="achievement-title">毕业典礼盛况</h3>
+                            <p class="achievement-description">2024年度毕业典礼精彩瞬间，见证孩子们从学习到成长的美好历程。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="achievements.html" class="btn btn-primary-custom">查看更多成果</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">开启孩子的精彩学习之旅</h2>
+            <p class="cta-description">立即预约免费试听课程，让专业教师为您的孩子制定个性化学习方案</p>
+            <a href="booking.html" class="btn btn-outline-light btn-lg">免费预约试听</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <h3 class="footer-title">艾瑞斯青少儿国际教育中心</h3>
+                        <div class="footer-content">
+                            <p>致力于为3-16岁孩子提供专业、优质的国际化教育培训服务，培养具有全球视野的未来人才。</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link">微</a>
+                                <a href="#" class="social-link">博</a>
+                                <a href="#" class="social-link">信</a>
+                                <a href="#" class="social-link">话</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h3 class="footer-title">快速链接</h3>
+                        <div class="footer-content">
+                            <p><a href="index.html" class="footer-link">首页</a></p>
+                            <p><a href="teachers.html" class="footer-link">师资力量</a></p>
+                            <p><a href="achievements.html" class="footer-link">学习成果</a></p>
+                            <p><a href="about.html" class="footer-link">关于我们</a></p>
+                            <p><a href="booking.html" class="footer-link">预约试听</a></p>
+                            <p><a href="activities.html" class="footer-link">活动展示</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-section">
+                        <h3 class="footer-title">课程科目</h3>
+                        <div class="footer-content">
+                            <p>少儿英语启蒙</p>
+                            <p>数学思维训练</p>
+                            <p>科学探索课程</p>
+                            <p>艺术创作培养</p>
+                            <p>语言表演艺术</p>
+                            <p>综合能力提升</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-section">
+                        <h3 class="footer-title">联系我们</h3>
+                        <div class="footer-content">
+                            <p><strong>电话：</strong>400-888-8888</p>
+                            <p><strong>邮箱：</strong>info@aeris-edu.com</p>
+                            <p><strong>地址：</strong>北京市朝阳区教育园区88号</p>
+                            <p><strong>营业时间：</strong></p>
+                            <p>周一至周五：9:00-18:00</p>
+                            <p>周六至周日：9:00-17:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 艾瑞斯青少儿国际教育中心. 保留所有权利. | 京ICP备88888888号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts (localized) -->
+    <script src="../default/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Fallback CDN for preview environment -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/index.js" defer></script>
+</body>
+</html>

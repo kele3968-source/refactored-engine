@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预约试听 - 艾瑞斯青少儿国际教育中心</title>
+    <meta name="description" content="免费预约艾瑞斯青少儿国际教育中心试听课程，专业教师一对一指导，为您的孩子制定个性化学习方案。">
+    
+    <!-- External Libraries (localized) -->
+    <link href="../default/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../default/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Localized styles -->
+    <link href="assets/css/base.css" rel="stylesheet">
+    <link href="assets/css/booking.css" rel="stylesheet">
+    <!-- Fallback CDN for preview environment -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #2C3E50;
+            --accent-color: #27AE60;
+            --light-gray: #F8F9FA;
+            --dark-gray: #343A40;
+            --warm-orange: #FF8A50;
+            --deep-blue: #34495E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 1.5rem;
+            color: var(--primary-color) !important;
+            font-weight: 700;
+        }
+
+        .nav-link {
+            color: var(--dark-gray) !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--deep-blue));
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .booking-form {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafbfc;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+            background: white;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafbfc;
+            cursor: pointer;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+            background: white;
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary-color), var(--warm-orange));
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-icon {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-list li {
+            padding: 8px 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-list li::before {
+            content: "→";
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--warm-orange));
+            color: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .benefit-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .benefit-description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .success-message {
+            background: var(--accent-color);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message {
+            background: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .calendar-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-nav {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-nav:hover {
+            background: var(--warm-orange);
+            transform: scale(1.1);
+        }
+
+        .calendar-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .calendar-day:hover {
+            background: var(--light-gray);
+        }
+
+        .calendar-day.available {
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .calendar-day.available:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .calendar-day.selected {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .calendar-day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .time-slot {
+            padding: 10px 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .time-slot:hover {
+            border-color: var(--primary-color);
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .time-slot.selected {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .booking-form {
+                padding: 30px 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .calendar-grid {
+                gap: 3px;
+            }
+            
+            .calendar-day {
+                font-size: 0.8rem;
+            }
+        }
+    --><!-- 内联样式已迁移至 base.css 与 booking.css，已注释掉该块 -->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">艾瑞斯教育</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="teachers.html">师资力量</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="achievements.html">学习成果</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">关于我们</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="booking.html">预约试听</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="activities.html">活动展示</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">预约免费试听</h1>
+            <p class="page-subtitle">体验专业教学，为孩子选择最适合的课程，开启精彩学习之旅</p>
+        </div>
+    </section>
+
+    <!-- Benefit Section -->
+    <section class="section-padding" style="background: var(--light-gray);">
+        <div class="container">
+            <div class="benefit-card">
+                <h2 class="benefit-title">为什么选择艾瑞斯？</h2>
+                <p class="benefit-description">
+                    专业师资团队 · 个性化教学方案 · 国际化课程体系 · 卓越教学成果<br>
+                    免费试听课程，让您和孩子亲身体验我们的教学品质
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="booking-form">
+                        <div class="success-message" id="successMessage">
+                            <h4><i class="fas fa-check-circle"></i> 预约成功！</h4>
+                            <p>感谢您的预约，我们的课程顾问将在24小时内与您联系确认试听安排。</p>
+                        </div>
+                        
+                        <form id="bookingForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">家长姓名 *</label>
+                                    <input type="text" class="form-control" name="parentName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">联系电话 *</label>
+                                    <input type="tel" class="form-control" name="phone" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">孩子姓名 *</label>
+                                    <input type="text" class="form-control" name="childName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">孩子年龄 *</label>
+                                    <select class="form-select" name="childAge" required>
+                                        <option value="">请选择年龄段</option>
+                                        <option value="3-5">3-5岁</option>
+                                        <option value="6-8">6-8岁</option>
+                                        <option value="9-12">9-12岁</option>
+                                        <option value="13-16">13-16岁</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">感兴趣的课程 *</label>
+                                <select class="form-select" name="courseType" required>
+                                    <option value="">请选择课程类型</option>
+                                    <option value="english">少儿英语启蒙</option>
+                                    <option value="math">数学思维训练</option>
+                                    <option value="science">科学探索课程</option>
+                                    <option value="art">艺术创作培养</option>
+                                    <option value="music">音乐才艺培养</option>
+                                    <option value="comprehensive">综合能力提升</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">邮箱地址</label>
+                                <input type="email" class="form-control" name="email" placeholder="选填，用于接收课程资料">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">选择试听日期</label>
+                                <div class="calendar-container">
+                                    <div class="calendar-header">
+                                        <button type="button" class="calendar-nav" id="prevMonth">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <div class="calendar-title" id="calendarTitle">2024年10月</div>
+                                        <button type="button" class="calendar-nav" id="nextMonth">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                    <div class="calendar-grid" id="calendarGrid">
+                                        <!-- Calendar days will be generated by JavaScript -->
+                                    </div>
+                                    <input type="hidden" name="selectedDate" id="selectedDate">
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="timeSlotsContainer" style="display: none;">
+                                <label class="form-label">选择试听时间</label>
+                                <div class="time-slots" id="timeSlots">
+                                    <!-- Time slots will be generated by JavaScript -->
+                                </div>
+                                <input type="hidden" name="selectedTime" id="selectedTime">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">特殊需求或备注</label>
+                                <textarea class="form-control form-textarea" name="notes" placeholder="请告诉我们孩子的学习习惯、特殊需求或其他需要了解的信息..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-submit" id="submitBtn">
+                                <i class="fas fa-calendar-check"></i> 确认预约试听
+                            </button>
+                            
+                            <div class="error-message" id="errorMessage"></div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="info-card">
+                        <h3 class="info-title">
+                            <i class="fas fa-info-circle info-icon"></i>
+                            试听须知
+                        </h3>
+                        <ul class="info-list">
+                            <li>试听课程完全免费，无任何隐藏费用</li>
+                            <li>每节试听课时长为45-60分钟</li>
+                            <li>建议家长陪同参加，了解教学过程</li>
+                            <li>请提前10分钟到达，便于安排</li>
+                            <li>请带好孩子的水杯和文具用品</li>
+                            <li>试听后可获得专业学习评估报告</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card" style="margin-top: 30px;">
+                        <h3 class="info-title">
+                            <i class="fas fa-phone info-icon"></i>
+                            联系我们
+                        </h3>
+                        <ul class="info-list">
+                            <li>预约热线：400-888-8888</li>
+                            <li>工作时间：周一至周日 9:00-18:00</li>
+                            <li>咨询微信：AerisEdu2024</li>
+                            <li>邮箱地址：booking@aeris-edu.com</li>
+                            <li>中心地址：北京市朝阳区教育园区88号</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card" style="margin-top: 30px;">
+                        <h3 class="info-title">
+                            <i class="fas fa-star info-icon"></i>
+                            试听福利
+                        </h3>
+                        <ul class="info-list">
+                            <li>免费学习能力评估</li>
+                            <li>个性化学习方案制定</li>
+                            <li>专业教师一对一指导</li>
+                            <li>精美学习资料礼包</li>
+                            <li>课程优惠券赠送</li>
+                            <li>优先报名权</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <h3 class="footer-title">艾瑞斯青少儿国际教育中心</h3>
+                        <div class="footer-content">
+                            <p>致力于为3-16岁孩子提供专业、优质的国际化教育培训服务，培养具有全球视野的未来人才。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h3 class="footer-title">快速链接</h3>
+                        <div class="footer-content">
+                            <p><a href="index.html" class="footer-link">首页</a></p>
+                            <p><a href="teachers.html" class="footer-link">师资力量</a></p>
+                            <p><a href="achievements.html" class="footer-link">学习成果</a></p>
+                            <p><a href="about.html" class="footer-link">关于我们</a></p>
+                            <p><a href="booking.html" class="footer-link">预约试听</a></p>
+                            <p><a href="activities.html" class="footer-link">活动展示</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-section">
+                        <h3 class="footer-title">联系我们</h3>
+                        <div class="footer-content">
+                            <p><strong>电话：</strong>400-888-8888</p>
+                            <p><strong>邮箱：</strong>info@aeris-edu.com</p>
+                            <p><strong>地址：</strong>北京市朝阳区教育园区88号</p>
+                            <p><strong>营业时间：</strong>周一至周日 9:00-18:00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-section">
+                        <h3 class="footer-title">课程科目</h3>
+                        <div class="footer-content">
+                            <p>少儿英语启蒙</p>
+                            <p>数学思维训练</p>
+                            <p>科学探索课程</p>
+                            <p>艺术创作培养</p>
+                            <p>语言表演艺术</p>
+                            <p>综合能力提升</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 艾瑞斯青少儿国际教育中心. 保留所有权利. | 京ICP备88888888号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts (localized) -->
+    <!-- 移除内联 <script> 块 -->
+    <script src="../default/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Fallback CDN for preview environment -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <!-- 脚本置底：仅保留本地资源 -->
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/booking.js" defer></script>
+</body>
+</html>

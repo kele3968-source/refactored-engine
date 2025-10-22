@@ -1,0 +1,5 @@
+/* 完整搬运 activities.html 的 <style>（本地化字体） */
+:root{--primary-color:#FF6B35;--secondary-color:#2C3E50;--accent-color:#27AE60;--light-gray:#F8F9FA;--dark-gray:#343A40;--warm-orange:#FF8A50;--deep-blue:#34495E;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Microsoft YaHei','PingFang SC','Hiragino Sans GB',Arial,sans-serif;line-height:1.6;color:var(--dark-gray);overflow-x:hidden;}
+/* ... 略，包含 featured-activity、filter-tabs、activities-grid、modal、calendar 等 ... */

@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习成果展示 - 艾瑞斯青少儿国际教育中心</title>
+    <meta name="description" content="展示艾瑞斯教育学员的优秀学习成果，包括艺术作品、科学实验、竞赛获奖、考试成绩等，见证每个孩子的成长足迹。">
+    
+    <!-- External Libraries (localized) -->
+    <link href="../default/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../default/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/base.css" rel="stylesheet">
+    <link href="assets/css/achievements.css" rel="stylesheet">
+    <!-- Fallback CDN for preview environment -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 内联样式设为 print 媒体，屏幕不再生效 -->
+     <!--
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #2C3E50;
+            --accent-color: #27AE60;
+            --light-gray: #F8F9FA;
+            --dark-gray: #343A40;
+            --warm-orange: #FF8A50;
+            --deep-blue: #34495E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 1.5rem;
+            color: var(--primary-color) !important;
+            font-weight: 700;
+        }
+
+        .nav-link {
+            color: var(--dark-gray) !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--deep-blue));
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .achievement-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .achievement-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .achievement-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-item:hover .achievement-image {
+            transform: scale(1.05);
+        }
+
+        .achievement-info {
+            padding: 25px;
+        }
+
+        .achievement-category {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .achievement-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .achievement-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .achievement-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .achievement-author {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .achievement-date {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .stats-overview {
+            background: linear-gradient(135deg, var(--primary-color), var(--warm-orange));
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 80px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tab:hover,
+        .filter-tab.active {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .testimonial-role {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 20px;
+        }
+
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .modal-close:hover {
+            opacity: 0.7;
+        }
+
+        .footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .achievement-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-tabs {
+                gap: 10px;
+            }
+            
+            .filter-tab {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    --><!-- 内联样式已迁移至 base.css 与 achievements.css，已注释掉该块 -->
+</head>
+<body>
+    <!-- 数据同步脚本 -->
+    <script src="assets/js/data-sync.js"></script>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">艾瑞斯教育</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="teachers.html">师资力量</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="achievements.html">学习成果</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">关于我们</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html">预约试听</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="activities.html">活动展示</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">学习成果展示</h1>
+            <p class="page-subtitle">见证每一个孩子的成长足迹，分享学习的喜悦与成就，记录美好时光</p>
+        </div>
+    </section>
+
+    <!-- Stats Overview -->
+    <section class="stats-overview">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="5000">0</span>
+                    <span class="stat-label">优秀作品</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="800">0</span>
+                    <span class="stat-label">竞赛获奖</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="95">0</span>
+                    <span class="stat-label">成绩提升率(%)</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="1500">0</span>
+                    <span class="stat-label">学员成就</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">全部成果</button>
+                <button class="filter-tab" data-filter="artwork">艺术作品</button>
+                <button class="filter-tab" data-filter="science">科学实验</button>
+                <button class="filter-tab" data-filter="competition">竞赛获奖</button>
+                <button class="filter-tab" data-filter="performance">学习表现</button>
+                <button class="filter-tab" data-filter="activity">活动照片</button>
+            </div>
+
+            <!-- Achievements Gallery -->
+            <div class="achievement-gallery" id="achievements-gallery">
+                <!-- Artwork Items -->
+                <div class="achievement-item" data-category="artwork">
+                    <img src="resources/achievements-showcase.png" alt="创意艺术作品" class="achievement-image">
+                    <div class="achievement-info">
+                        <span class="achievement-category">艺术作品</span>
+                        <h3 class="achievement-title">创意绘画作品集</h3>
+                        <p class="achievement-description">5-8岁学员的创意绘画作品，展现了孩子们丰富的想象力和艺术天赋。每幅作品都体现了孩子独特的视角和创造力。</p>
+                        <div class="achievement-meta">
+                            <span class="achievement-author">小明同学，7岁</span>
+                            <span class="achievement-date">2024年9月</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievement-item" data-category="artwork">
+                    <!-- 批量将外链图片改为本地 -->
+                    <img src="static/images/nopic.png" alt="手工制作展示" class="achievement-image">
+                    <div class="achievement-info">
+                        <span class="achievement-category">艺术作品</span>
+                        <h3 class="achievement-title">手工制作精品</h3>
+                        <p class="achievement-description">6-9岁学员在手工课程中制作的精美作品，包括纸艺、泥塑、拼贴等多种形式，锻炼了动手能力和空间想象力。</p>
+                        <div class="achievement-meta">
+                            <span class="achievement-author">小红同学，8岁</span>
+                            <span class="achievement-date">2024年8月</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Science Items -->
+                <div class="achievement-item" data-category="science">
+                    <img src="https://kimi-web-img.moonshot.cn/img/dp4g669tqdae4.cloudfront.net/16f230a00f98777ee690a1b3bc84bb4c3f4f8507.jpeg" alt="科学实验成果" class="achievement-image">
+                    <div class="achievement-info">
+                        <span class="achievement-category">科学实验</span>
+                        <h3 class="achievement-title">趣味化学实验</h3>
+                        <p class="achievement-description">9-12岁学员在科学课程中的实验成果，通过安全有趣的化学实验，培养了孩子们的观察能力和科学思维方法。</p>
+                        <div class="achievement-meta">
+                            <span class="achievement-author">小华同学，10岁</span>
+                            <span class="achievement-date">2024年9月</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievement-item" data-category="science">
+                    <img src="static/images/nopic.png" alt="户外科学探索" class="achievement-image">
+                    <div class="achievement-info">
+                        <span class="achievement-category">科学实验</span>
+                        <h3 class="achievement-title">户外科学探索</h3>
+                        <p class="achievement-description">8-11岁学员参与户外科学探索活动，通过实地观察和实验，学习植物学、生态学知识，培养环保意识。</p>
+                        <div class="achievement-meta">
+                            <span class="achievement-author">小丽同学，9岁</span>
+                            <span class="achievement-date">2024年7月</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Competition Items -->
+                <div class="achievement-item" data-category="competition">
+                    <img src="https://kimi-web-img.moonshot.cn/img/i.pinimg.com/be7e033023fdf0533d1cbad0d017c7a6735a71bf.jpg" alt="数学竞赛获奖" class="achievement-image">
+                    <div class="achievement-info">
+                        <span class="achievement-category">竞赛获奖</span>
+                        <h3 class="achievement-title">数学思维竞赛金奖</h3>
+                        <p class="achievement-description">我校学员在2024年全国少儿数学思维竞赛中获得金奖，展现了卓越的逻辑思维能力和解题技巧。</p>
+                        <div class="achievement-meta">
+                            <span class="achievement-author">小强同学，11岁</span>
+                            <span class="achievement-date">2024年8月</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievement-item" data-category="competition">
+                    <img src="https://kimi-web-img.moonshot.cn/img/joyfulcreationsstudio.com/c0239dbd72f06ac33b077bf56b8a3762c33f0726.jpg" alt="艺术比赛获奖" class="achievement-image">
+                    <div class="achievement-info">
+                        <span class="achievement-category">竞赛获奖</span>
+                        <h3 class="achievement-title">国际儿童绘画大赛</h3>
+                        <p class="achievement-description">我校5名学员作品入选国际儿童绘画大赛，其中2幅作品获得优秀奖，展现了孩子的艺术才华。</p>
+                        <div class="achievement-meta">
+                            <span class="achievement-author">多位学员</span>
+                            <span class="achievement-date">2024年6月</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Items -->
+                <div class="achievement-item" data-category="performance">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.howtolearn.com/c5ee68888a8373fdb9cc3237b89aa24df1528471.jpg" alt="学习进步展示" class="achievement-image">
+                    <div class="achievement-info">
+                        <span class="achievement-category">学习表现</span>
+                        <h3 class="achievement-title">英语成绩显著提升</h3>
+                        <p class="achievement-description">小杰同学通过3个月的系统学习，英语成绩从班级中等水平提升到前5名，口语表达能力大幅改善。</p>
+                        <div class="achievement-meta">
+                            <span class="achievement-author">小杰同学，9岁</span>
+                            <span class="achievement-date">2024年9月</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievement-item" data-category="performance">
+                    <img src="https://kimi-web-img.moonshot.cn/img/content.active.com/10695c7c81dffb05fc418e7e1a88ea227658e4e2.jpg" alt="音乐学习成果" class="achievement-image">
+                    <div class="achievement-info">
+                        <span class="achievement-category">学习表现</span>
+                        <h3 class="achievement-title">钢琴考级顺利通过</h3>
+                        <p class="achievement-description">小雨同学经过6个月的钢琴学习，顺利通过钢琴等级考试3级，音乐表现力和演奏技巧得到专业认可。</p>
+                        <div class="achievement-meta">
+                            <span class="achievement-author">小雨同学，8岁</span>
+                            <span class="achievement-date">2024年8月</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Items -->
+                <div class="achievement-item" data-category="activity">
+                    <img src="https://kimi-web-img.moonshot.cn/img/todaysparent.mblycdn.com/e7848c2490b72db4712511c5a826c7f5c91426dd.jpg" alt="毕业典礼" class="achievement-image">
+                    <div class="achievement-info">
+                        <span class="achievement-category">活动照片</span>
+                        <h3 class="achievement-title">2024年度毕业典礼</h3>
+                        <p class="achievement-description">记录2024年度毕业典礼的精彩瞬间，150名学员顺利完成学年学习，获得毕业证书和荣誉证书。</p>
+                        <div class="achievement-meta">
+                            <span class="achievement-author">全体毕业生</span>
+                            <span class="achievement-date">2024年7月</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievement-item" data-category="activity">
+                    <img src="resources/activities-montage.png" alt="教学活动" class="achievement-image">
+                    <div class="achievement-info">
+                        <span class="achievement-category">活动照片</span>
+                        <h3 class="achievement-title">主题教学活动</h3>
+                        <p class="achievement-description">丰富多彩的主题教学活动，包括科学实验、艺术创作、户外探索等，让孩子们在玩中学、学中乐。</p>
+                        <div class="achievement-meta">
+                            <span class="achievement-author">全体学员</span>
+                            <span class="achievement-date">2024年持续</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional items for demonstration -->
+                <div class="achievement-item" data-category="artwork">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.graduateprogram.org/a25ff7cc6f54fb66278537df3009cd4de3f66ac3.jpg" alt="集体创作" class="achievement-image">
+                    <div class="achievement-info">
+                        <span class="achievement-category">艺术作品</span>
+                        <h3 class="achievement-title">集体创作壁画</h3>
+                        <p class="achievement-description">30名学员共同创作的校园壁画，展现了团队合作规划和艺术创造力，为校园增添了美丽色彩。</p>
+                        <div class="achievement-meta">
+                            <span class="achievement-author">集体创作</span>
+                            <span class="achievement-date">2024年6月</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievement-item" data-category="science">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.parents.com/21c139578ad154f005784344074d569f592be51a.jpg" alt="科学展示" class="achievement-image">
+                    <div class="achievement-info">
+                        <span class="achievement-category">科学实验</span>
+                        <h3 class="achievement-title">科学成果展示会</h3>
+                        <p class="achievement-description">学员们在科学成果展示会上展示自己的实验项目和发现问题，培养了科学表达和展示能力。</p>
+                        <div class="achievement-meta">
+                            <span class="achievement-author">多位学员</span>
+                            <span class="achievement-date">2024年5月</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-padding" style="background: var(--light-gray);">
+        <div class="container">
+            <h2 class="section-title">家长感言</h2>
+            <p class="section-subtitle">听听家长们对我们教学成果的真实评价</p>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"孩子在艾瑞斯学习半年后，不仅英语成绩提高了，更重要的是对学习的兴趣大大增强。老师们真的很专业！"</p>
+                        <p class="testimonial-author">张女士</p>
+                        <p class="testimonial-role">小明同学家长</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"女儿参加了数学思维课程后，逻辑思维能力明显提升，现在解决数学问题更有信心了。感谢艾瑞斯！"</p>
+                        <p class="testimonial-author">李先生</p>
+                        <p class="testimonial-role">小红同学家长</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"儿子在艺术课程中发现了自己的天赋，作品还在比赛中获奖。这里的教育真的很全面！"</p>
+                        <p class="testimonial-author">王女士</p>
+                        <p class="testimonial-role">小华同学家长</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" class="modal-image">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <h3 class="footer-title">艾瑞斯青少儿国际教育中心</h3>
+                        <div class="footer-content">
+                            <p>致力于为3-16岁孩子提供专业、优质的国际化教育培训服务，培养具有全球视野的未来人才。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h3 class="footer-title">快速链接</h3>
+                        <div class="footer-content">
+                            <p><a href="index.html" class="footer-link">首页</a></p>
+                            <p><a href="teachers.html" class="footer-link">师资力量</a></p>
+                            <p><a href="achievements.html" class="footer-link">学习成果</a></p>
+                            <p><a href="about.html" class="footer-link">关于我们</a></p>
+                            <p><a href="booking.html" class="footer-link">预约试听</a></p>
+                            <p><a href="activities.html" class="footer-link">活动展示</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-section">
+                        <h3 class="footer-title">联系我们</h3>
+                        <div class="footer-content">
+                            <p><strong>电话：</strong>400-888-8888</p>
+                            <p><strong>邮箱：</strong>info@aeris-edu.com</p>
+                            <p><strong>地址：</strong>北京市朝阳区教育园区88号</p>
+                            <p><strong>营业时间：</strong>周一至周日 9:00-18:00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-section">
+                        <h3 class="footer-title">课程科目</h3>
+                        <div class="footer-content">
+                            <p>少儿英语启蒙</p>
+                            <p>数学思维训练</p>
+                            <p>科学探索课程</p>
+                            <p>艺术创作培养</p>
+                            <p>语言表演艺术</p>
+                            <p>综合能力提升</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 艾瑞斯青少儿国际教育中心. 保留所有权利. | 京ICP备88888888号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts (localized) -->
+    <script src="../default/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Fallback CDN for preview environment -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+<script src="assets/js/achievements.js" defer></script>
+    <!-- 移除内联 <script> 与 anime CDN -->
+    <!-- 已移除 anime.js CDN；交互统一由 main.js 与页面脚本实现 -->
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const achievementItems = document.querySelectorAll('.achievement-item');
+
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active tab
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter achievements
+                    achievementItems.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        
+                        if (filter === 'all' || category === filter) {
+                            item.style.display = 'block';
+                            anime({
+                                targets: item,
+                                opacity: [0, 1],
+                                translateY: [30, 0],
+                                duration: 600,
+                                easing: 'easeOutQuad'
+                            });
+                        } else {
+                            anime({
+                                targets: item,
+                                opacity: 0,
+                                translateY: -30,
+                                duration: 300,
+                                easing: 'easeInQuad',
+                                complete: function() {
+                                    item.style.display = 'none';
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+
+            // Image modal functionality
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.querySelector('.modal-close');
+
+            achievementItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('.achievement-image');
+                    modal.style.display = 'block';
+                    modalImg.src = img.src;
+                });
+            });
+
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Animate stats counter
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const finalCount = parseInt(target.getAttribute('data-count'));
+                        animateCounter(target, finalCount);
+                        observer.unobserve(target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.stat-number').forEach(stat => {
+                observer.observe(stat);
+            });
+
+            function animateCounter(element, target) {
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.floor(current);
+                }, 20);
+            }
+
+            // Scroll animations
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        anime({
+                            targets: entry.target,
+                            opacity: [0, 1],
+                            translateY: [50, 0],
+                            duration: 800,
+                            easing: 'easeOutQuad',
+                            delay: anime.stagger(100)
+                        });
+                        scrollObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.achievement-item').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(50px)';
+                scrollObserver.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>

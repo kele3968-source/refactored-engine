@@ -1,0 +1,245 @@
+<?php
+session_start();
+require_once '../config/database.php';
+
+// 检查登录状态
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    header('Location: login.php');
+    exit;
+}
+
+$db = Database::getInstance()->getConnection();
+
+// 处理表单提交
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'] ?? '';
+    
+    if ($action === 'add') {
+        // 添加教育特色
+        $title = trim($_POST['title']);
+        $description = trim($_POST['description']);
+        $icon = trim($_POST['icon']);
+        $image_url = trim($_POST['image_url']);
+        $sort_order = intval($_POST['sort_order']);
+        
+        $stmt = $db->prepare("INSERT INTO features (title, description, icon, image_url, sort_order) VALUES (?, ?, ?, ?, ?)");
+        if ($stmt->execute([$title, $description, $icon, $image_url, $sort_order])) {
+            $_SESSION['message'] = '教育特色添加成功！';
+            $_SESSION['message_type'] = 'success';
+        } else {
+            $_SESSION['message'] = '添加失败！';
+            $_SESSION['message_type'] = 'danger';
+        }
+    } elseif ($action === 'edit') {
+        // 编辑教育特色
+        $id = intval($_POST['id']);
+        $title = trim($_POST['title']);
+        $description = trim($_POST['description']);
+        $icon = trim($_POST['icon']);
+        $image_url = trim($_POST['image_url']);
+        $sort_order = intval($_POST['sort_order']);
+        $status = $_POST['status'];
+        
+        $stmt = $db->prepare("UPDATE features SET title=?, description=?, icon=?, image_url=?, sort_order=?, status=? WHERE id=?");
+        if ($stmt->execute([$title, $description, $icon, $image_url, $sort_order, $status, $id])) {
+            $_SESSION['message'] = '教育特色更新成功！';
+            $_SESSION['message_type'] = 'success';
+        } else {
+            $_SESSION['message'] = '更新失败！';
+            $_SESSION['message_type'] = 'danger';
+        }
+    } elseif ($action === 'delete') {
+        // 删除教育特色
+        $id = intval($_POST['id']);
+        $stmt = $db->prepare("DELETE FROM features WHERE id=?");
+        if ($stmt->execute([$id])) {
+            $_SESSION['message'] = '教育特色删除成功！';
+            $_SESSION['message_type'] = 'success';
+        } else {
+            $_SESSION['message'] = '删除失败！';
+            $_SESSION['message_type'] = 'danger';
+        }
+    }
+    
+    header('Location: features.php');
+    exit;
+}
+
+// 获取教育特色列表
+$features = $db->query("SELECT * FROM features ORDER BY sort_order ASC, id DESC")->fetchAll();
+
+// 获取编辑的教育特色数据
+$edit_feature = null;
+if (isset($_GET['edit'])) {
+    $id = intval($_GET['edit']);
+    $stmt = $db->prepare("SELECT * FROM features WHERE id=?");
+    $stmt->execute([$id]);
+    $edit_feature = $stmt->fetch();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教育特色管理 - 艾瑞斯教育</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <?php include 'sidebar.php'; ?>
+    
+    <div class="main-content">
+        <div class="header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">教育特色管理</h3>
+                <a href="features.php?action=add" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> 添加教育特色
+                </a>
+            </div>
+        </div>
+
+        <?php if (isset($_SESSION['message'])): ?>
+            <div class="alert alert-<?php echo $_SESSION['message_type']; ?> alert-dismissible fade show">
+                <?php echo $_SESSION['message']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <?php unset($_SESSION['message'], $_SESSION['message_type']); ?>
+        <?php endif; ?>
+
+        <?php if (isset($_GET['action']) && $_GET['action'] === 'add' || $edit_feature): ?>
+            <!-- 添加/编辑表单 -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title"><?php echo $edit_feature ? '编辑教育特色' : '添加教育特色'; ?></h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <input type="hidden" name="action" value="<?php echo $edit_feature ? 'edit' : 'add'; ?>">
+                        <?php if ($edit_feature): ?>
+                            <input type="hidden" name="id" value="<?php echo $edit_feature['id']; ?>">
+                        <?php endif; ?>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">标题</label>
+                                    <input type="text" class="form-control" name="title" 
+                                           value="<?php echo $edit_feature ? $edit_feature['title'] : ''; ?>" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">图标类名</label>
+                                    <input type="text" class="form-control" name="icon" 
+                                           value="<?php echo $edit_feature ? $edit_feature['icon'] : ''; ?>" 
+                                           placeholder="例如: fas fa-user-graduate">
+                                    <small class="text-muted">使用 Font Awesome 图标类名</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">描述</label>
+                            <textarea class="form-control" name="description" rows="3" required><?php echo $edit_feature ? $edit_feature['description'] : ''; ?></textarea>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">图片URL</label>
+                                    <input type="text" class="form-control" name="image_url" 
+                                           value="<?php echo $edit_feature ? $edit_feature['image_url'] : ''; ?>">
+                                    <?php if ($edit_feature && $edit_feature['image_url']): ?>
+                                        <img src="<?php echo $edit_feature['image_url']; ?>" class="preview-image" alt="预览">
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">排序</label>
+                                    <input type="number" class="form-control" name="sort_order" 
+                                           value="<?php echo $edit_feature ? $edit_feature['sort_order'] : '0'; ?>" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <?php if ($edit_feature): ?>
+                            <div class="mb-3">
+                                <label class="form-label">状态</label>
+                                <select class="form-control" name="status">
+                                    <option value="active" <?php echo $edit_feature['status'] === 'active' ? 'selected' : ''; ?>>激活</option>
+                                    <option value="inactive" <?php echo $edit_feature['status'] === 'inactive' ? 'selected' : ''; ?>>禁用</option>
+                                </select>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                            <a href="features.php" class="btn btn-secondary">取消</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        <?php else: ?>
+            <!-- 教育特色列表 -->
+            <div class="card">
+                <div class="card-body">
+                    <?php if (empty($features)): ?>
+                        <p class="text-muted text-center">暂无教育特色数据</p>
+                    <?php else: ?>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>图标</th>
+                                        <th>标题</th>
+                                        <th>描述</th>
+                                        <th>排序</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($features as $feature): ?>
+                                        <tr>
+                                            <td>
+                                                <?php if ($feature['icon']): ?>
+                                                    <i class="<?php echo $feature['icon']; ?> fa-2x text-primary"></i>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td><?php echo $feature['title']; ?></td>
+                                            <td><?php echo mb_strlen($feature['description']) > 50 ? mb_substr($feature['description'], 0, 50) . '...' : $feature['description']; ?></td>
+                                            <td><?php echo $feature['sort_order']; ?></td>
+                                            <td>
+                                                <span class="badge bg-<?php echo $feature['status'] === 'active' ? 'success' : 'secondary'; ?>">
+                                                    <?php echo $feature['status'] === 'active' ? '激活' : '禁用'; ?>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <a href="features.php?edit=<?php echo $feature['id']; ?>" class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <form method="POST" style="display: inline-block;" onsubmit="return confirm('确定删除这个教育特色吗？')">
+                                                    <input type="hidden" name="action" value="delete">
+                                                    <input type="hidden" name="id" value="<?php echo $feature['id']; ?>">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
